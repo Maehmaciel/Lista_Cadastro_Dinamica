@@ -1,30 +1,29 @@
-
-function ave(){
-        alert('inclui')
+let cad_id=0
+function envia(){
+        //acesssando os inputs e o body
         const inputs=document.querySelectorAll('input')
         const body=document.querySelector('body')
+        //criando a lista
         const ul= document.createElement('ul')
-        const id_cad= document.createElement('li')
-        const li_um= document.createElement('li')
-        const li_dois= document.createElement('li')
-        const li_tres= document.createElement('li')
+        const li_nome= document.createElement('li')
+        const li_telefone= document.createElement('li')
+        const li_endereco= document.createElement('li')
         const excluir= document.createElement('button')
         const editar= document.createElement('button')
-        li_um.innerHTML=inputs[0].value
-        li_um.setAttribute('pos',`${inputs[0].value}`)
-        li_dois.innerHTML=inputs[1].value
-        li_dois.setAttribute('pos',`telefone`)
-        li_tres.innerHTML=inputs[2].value
-        li_tres.setAttribute('pos',`endereco`)
-        excluir.id="ex_"+inputs[0].value
+        cad_id++
+        ul.id=cad_id
+        li_nome.innerHTML=inputs[0].value
+        li_telefone.innerHTML=inputs[1].value
+        li_endereco.innerHTML=inputs[2].value
+        excluir.id="ex_"+cad_id
         excluir.innerText="Excluir"
-        editar.id="ed_"+inputs[0].value
+        editar.id="ed_"+cad_id
         editar.innerText="Editar"
         excluir.setAttribute('onclick',`excluir('${excluir.id}')`)
         editar.setAttribute('onclick',`editar('${editar.id}')`)
-        ul.appendChild(li_um)
-        ul.appendChild(li_dois)
-        ul.appendChild(li_tres)
+        ul.appendChild(li_nome)
+        ul.appendChild(li_telefone)
+        ul.appendChild(li_endereco)
         ul.appendChild(excluir)
         ul.appendChild(editar)
         body.appendChild(ul)
@@ -32,7 +31,7 @@ function ave(){
 }
 function limpar(){
         const inputs=document.querySelectorAll('input')
-        for(let i=0;i<inputs.length-1;i++){
+        for(let i=0;i<inputs.length;i++){
                 inputs[i].value=""
         }
 }
@@ -41,54 +40,25 @@ function excluir(a){
        
 }
 
-
-
-
-
-
-
-
-function ed(a){
-        alert('editou')
-        const inputs=document.querySelectorAll('input')
-        //const novo=a.cloneNode(true)
-        alert(document.querySelector('envia').onclick)
-        li=document.getElementById(a)
-        ul=li.parentElement
-        li_um=ul.childNodes[0]
-        li_dois=ul.childNodes[1]
-        li_tres=ul.childNodes[2]
-        li_um.innerHTML=inputs[0].value
-        li_dois.innerHTML=inputs[1].value
-        li_tres.innerHTML=inputs[2].value
-        excluir.id="ex_"+inputs[0].value
-        excluir.innerText="Excluir"
-        editar.id="ed_"+inputs[0].value
-        editar.innerText="Editar"
-        excluir.setAttribute('onclick',`excluir('${excluir.id}')`)
-        editar.setAttribute('onclick',`editar('${editar.id}')`)
-        limpar()
-}
-
-
-
-
-
-
-
 function editar(a){
         li=document.getElementById(a)
         ul=li.parentElement
-//        alert(ul.childNodes[0].getAttribute('pos'))
         const inputs=document.querySelectorAll('input')
                 for(i=0;i<3;i++){
-
                 inputs[i].value=ul.childNodes[i].textContent
+                }   
+        const editar= document.querySelector('#editar')
+                document.querySelector('#envia').classList.add('esconder')
+               editar.classList.remove('esconder')
+                
+                editar.onclick=function(){
+                        for(i=0;i<3;i++){
+                                ul.childNodes[i].innerHTML=inputs[i].value
+                                }
+                                document.querySelector('#envia').classList.remove('esconder')
+                                editar.classList.add('esconder')
+                                limpar()
                 }
-               ed(a)
-            
-       
 }
-
+       
 onload=limpar
-
