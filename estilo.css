@@ -1,3 +1,6 @@
+.esconder{
+    display: none;
+}
 body{
     background-color: #E8E7BA;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -32,6 +35,3 @@ ul{
     align-items: center;
 }
 
-.esconder{
-    display: hidden;
-}
