@@ -2,7 +2,7 @@
     display: none;
 }
 body{
-    background-color: #E8E7BA;
+    background-color: #6af197;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -10,12 +10,15 @@ form {
     display: flex;
     flex-direction: column;
 }
-
+label{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
 form input,
 form select,
 form button {
-    border-radius: 10px;
-    margin: 10px;
+    border-radius: 5px;
     font-size: 1.6em;
 }
 
